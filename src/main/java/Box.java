@@ -1,35 +1,40 @@
-public class Box<K, V, E> {
-    private K key;
-    private V value1;
-    private E value2;
+import java.util.List;
 
-    public K getKey() {
-        return key;
+public class Box<T extends Number & Comparable<T>> {
+    private T[] array;
+
+    public Box(T... array) {
+        this.array = array;
     }
 
-    public void setKey(K key) {
-        this.key = key;
+    public T[] getArray() {
+        return array;
     }
 
-    public V getValue1() {
-        return value1;
+    public double avg(){
+        double result = 0;
+        for (T element : array){
+            result += ((Number) element).doubleValue();
+        }
+        return result / array.length;
     }
 
-    public void setValue1(V value1) {
-        this.value1 = value1;
+    public static void method(List<? extends Number> numbers){
+
     }
 
-    public E getValue2() {
-        return value2;
+    public int compare(Box<?> another){
+        if (avg() > another.avg()){
+            return 1;
+        }else if (avg() == another.avg()){
+            return 0;
+        }else {
+            return -1;
+        }
     }
 
-    public void setValue2(E value2) {
-        this.value2 = value2;
+    public void setArray(T[] array) {
+        this.array = array;
     }
 
-    public Box(K key, V value1, E value2) {
-        this.key = key;
-        this.value1 = value1;
-        this.value2 = value2;
-    }
 }
