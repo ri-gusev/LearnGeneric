@@ -20,7 +20,7 @@ public class Box<T extends Number & Comparable<T>> {
         return result / array.length;
     }
 
-    public static <U> void transfer(List<? extends U> src, List<? super U> dst){
+    public static <U extends Number> void transfer(List<? extends U> src, List<? super U> dst){
         dst.addAll(src);
         src.clear();
     }
